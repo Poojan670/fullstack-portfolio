@@ -1,9 +1,8 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 
-type Props = {}
 
-function Circles({ }: Props) {
+function Circles() {
     return (
         <motion.div
             initial={{

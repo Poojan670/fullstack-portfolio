@@ -1,11 +1,9 @@
+from rest_framework import viewsets
+
 from .models import (PageInfo, Skills,
                      Experience, Project, Socials)
-
 from .serializers import (SocialsSerializer, SkillsSerializer, PageInfoSerializer,
                           ProjectSerializer, ExperienceSerializer, GetPageInfoListSerializer, GetExperienceSerializer)
-
-from rest_framework import viewsets
-from rest_framework.generics import ListAPIView, CreateAPIView
 
 
 class SocialViewSet(viewsets.ModelViewSet):
@@ -43,3 +41,4 @@ class SkillsViewSet(viewsets.ModelViewSet):
 class ProjectViewSet(viewsets.ModelViewSet):
     queryset = Project.objects.all()
     serializer_class = ProjectSerializer
+

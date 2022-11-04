@@ -50,6 +50,9 @@ class GetExperienceSerializer(serializers.ModelSerializer):
 
 
 class ProjectSerializer(serializers.ModelSerializer):
+    technologies = SkillsSerializer(read_only=True, many=True)
+
     class Meta:
         model = Project
         fields = '__all__'
+

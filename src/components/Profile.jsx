@@ -1,12 +1,11 @@
 import React from 'react'
-import Circles from '../utils/Circles'
+import Circles from '../subComponents/Circles'
 import { Cursor, useTypewriter } from 'react-simple-typewriter';
 
-type Props = {}
 
-function Profile({ }: Props) {
+function Profile({ pageInfo }) {
     const [text, count] = useTypewriter({
-        words: ["Hi, My name's Poojan", "Full Stack Developer", "Software engineer"],
+        words: [`Hi, My name's ${pageInfo?.name}`, "Full Stack Developer", "Software engineer"],
         loop: true,
         delaySpeed: 2000
     })
@@ -16,9 +15,9 @@ function Profile({ }: Props) {
             <Circles />
             <img
                 className='relative rounded-full h-32 w-32 mx-auto object-cover'
-                src="https://c4.wallpaperflare.com/wallpaper/585/942/385/anime-gintama-gintoki-sakata-wallpaper-preview.jpg" alt="" />
+                src={pageInfo?.image} alt="" />
             <div className='z-20'>
-                <h2 className='text-sm uppercase text-gray-500 pb-2 tracking-[15px]'>Software Engineer</h2>
+                <h2 className='text-sm uppercase text-gray-500 pb-2 tracking-[15px]'>{pageInfo?.role}</h2>
                 <h1 className='text-5xl lg:text-6xl font-semibold px-10'>
                     <span className='mr-3'>{text}</span>
                     <Cursor cursorColor="#F7AB0A" />

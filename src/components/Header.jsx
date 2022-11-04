@@ -1,13 +1,13 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { SocialIcon } from 'react-social-icons'
 import { motion } from "framer-motion";
+import { getSocials } from '../utils/api';
 
-type Props = {};
 
-export const Header = ({ }: Props) => {
+const Header = ({ pageInfo }) => {
+
     return (
         <main className="sticky top-0 p-5 flex items-start justify-between max-w-7xl mx-auto z-20 xl:items-center">
-            {/*    Social Icons */}
             <motion.div
                 initial={{
                     x: -500,
@@ -26,9 +26,13 @@ export const Header = ({ }: Props) => {
                 }}
 
                 className="flex flex-row items-center">
-                <SocialIcon url="https://youtube.com/pewdiepie" fgColor="gray" bgColor="transparent" />
-                <SocialIcon url="https://youtube.com/pewdiepie" fgColor="gray" bgColor="transparent" />
-                <SocialIcon url="https://youtube.com/pewdiepie" fgColor="gray" bgColor="transparent" />
+                {pageInfo?.social.map(socialIcon => (
+                    <SocialIcon
+                        key={socialIcon.id}
+                        url={socialIcon.url}
+                        fgColor="gray" bgColor="transparent" />
+                ))}
+
             </motion.div>
 
             {/*    Navbar */}
@@ -58,3 +62,5 @@ export const Header = ({ }: Props) => {
         </main>
     )
 }
+
+export default Header

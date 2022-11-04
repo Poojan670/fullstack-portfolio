@@ -70,7 +70,7 @@ class Project(DateTimeModel):
     title = models.CharField(max_length=255, help_text="Project Title can have upto 255 characters")
     image = models.ImageField(upload_to='images', blank=True, help_text="Image of the project shown in case study")
     summary = models.TextField(help_text="Project Summary")
-    technologies = models.ForeignKey(Skills, on_delete=models.PROTECT, related_name="project_tech")
+    technologies = models.ManyToManyField(Skills, related_name="project_tech")
     build_url = models.URLField(max_length=255, blank=True, help_text="Github/Live demo url of the project")
 
     def __str__(self):

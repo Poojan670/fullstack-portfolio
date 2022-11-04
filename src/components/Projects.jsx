@@ -1,10 +1,8 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 
-type Props = {}
 
-export default function Projects({ }: Props) {
-    const projects = [1, 2, 3, 4, 5];
+export default function Projects({ projects }) {
     return (
         <motion.div
             initial={{
@@ -14,7 +12,7 @@ export default function Projects({ }: Props) {
             transition={{ duration: 1.5 }}
 
             className='h-screen relative flex overflow-hidden flex-col text-left md:flex-row max-w-full justify-evenly mx-auto items-center z-0'>
-            <h3 className='absolute top-24 uppercase tracking-[20px] text-gray-500 text-2xl'>Projects</h3>
+            <h3 className='absolute top-24 uppercase tracking-[20px] text-gray-500 text-2xl md:-mt-20'>Projects</h3>
 
             <div className='relative w-full flex overflow-x-scroll overflow-y-hidden snap-x snap-mandatory z-20
             scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-[#F7AB0A]/80'>
@@ -38,7 +36,7 @@ export default function Projects({ }: Props) {
                                 once: true
                             }}
 
-                            src="https://cdn.sanity.io/images/ltuexkre/production/af7ca99b5a796d0698cf9121a4a0795b5022b6be-666x375.png"
+                            src={project?.image}
                             height="50%"
 
                             className=''
@@ -50,11 +48,22 @@ export default function Projects({ }: Props) {
                                 <span className='underline decoration-[#F7AB0A]/50'>
                                     Case Study {i + 1} of {projects.length}
                                 </span>{" "}
-                                Youtube Clone
+                                {project?.title}
                             </h4>
 
+                            <div className='flex items-center space-x-2 justify-center'>
+                                {project?.technologies.map(technology => (
+                                    <img
+                                        className='h-5 w-5'
+                                        key={technology.id}
+                                        src={technology.image}
+                                        alt=''
+                                    />
+                                ))}
+                            </div>
+
                             <p className='text-lg text-center md:text-leftmotion.'>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod temporibus enim cumque voluptatum ullam, officiis cupiditate dolores dolorem, praesentium quos ea maiores fuga, nemo molestias quae nisi earum esse! Magnam?
+                                {project?.summary}
                             </p>
 
                         </div>
