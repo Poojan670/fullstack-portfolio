@@ -1,0 +1,60 @@
+version: '3.8'
+
+services:
+  react:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    networks:
+      - network-server
+    ports:
+      - 3000:3000
+    volumes:
+      - ./app
+    stdin_open: true
+    depends_on:
+      - django
+
+  django:
+    build:
+      context: ./django/
+      dockerfile: Dockerfile
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./app/django
+    stdin_open: true
+    networks:
+      - network-server
+    environment:
+      - SECRET_KEY=insertyoursecretkeyhere
+      - DEBUG=True
+      - ALLOWED_HOSTS=*
+      - DB_NAME=portfolio_db
+      - DB_USER=postgres
+      - DB_PASSWORD=poojan12
+      - DB_HOST=db
+      - DB_PORT=5432
+      - CORS_ALLOWED_ORIGINS=http://localhost:3000,http://localhost:3001
+      - CORS_ALLOW_ALL_ORIGINS=True
+    depends_on:
+      - db
+    ports:
+      - 8000:8000
+
+  db:
+    image: postgres:14-alpine
+    environment:
+      - POSTGRES_PASSWORD=poojan12
+      - POSTGRES_DB=portfolio_db
+    networks:
+      - network-server
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+networks:
+  network-server:
+    driver: bridge

@@ -13,7 +13,7 @@ class SocialsSerializer(serializers.ModelSerializer):
 class PageInfoSerializer(serializers.ModelSerializer):
     class Meta:
         model = PageInfo
-        fields = ['name', 'role', 'image', 'background_info',
+        fields = ['name', 'role', 'image', 'background_info', 'profile_pic',
                   'phone_no', 'email', 'address', 'social', 'created_at', 'updated_at']
         read_only_fields = ['created_at', 'updated_at']
 
@@ -23,7 +23,7 @@ class GetPageInfoListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = PageInfo
-        fields = ['name', 'role', 'image', 'background_info',
+        fields = ['name', 'role', 'image', 'background_info', 'profile_pic',
                   'phone_no', 'email', 'address', 'social']
 
 

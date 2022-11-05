@@ -22,6 +22,7 @@ class PageInfo(DateTimeModel):
                             help_text="Name should be of max 100 characters, includes first and last name")
     role = models.CharField(max_length=30, help_text="Job role of the user")
     image = models.ImageField(upload_to='images', help_text="Header Image of the user", blank=True)
+    profile_pic = models.ImageField(upload_to='images', help_text="Profile picture of the user", blank=True)
     background_info = models.TextField(help_text="Background information of the user")
     phone_no = models.CharField(max_length=15, unique=True, help_text="Phone number of the user, "
                                                                       "should be max 15 characters")
