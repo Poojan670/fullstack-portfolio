@@ -200,18 +200,28 @@ $ docker-compose -f k8s/minikube.yml build backend
 $ k apply -f kubernetes/django/deployment.yml
 
 _for postgres user and password_
+
 $ echo -n "my-secret-user" | base64
 bXktc2VjcmV0LXN0cmluZw==
 $ echo -n "my-secret-password" | base64 -d
 my-secret-string
 $ k apply -f k8s/postgres/secrets.yml
-$ k apply -f k8s/django/deployment.yml (if any changes for v2)
+
+$ k apply -f k8s/django/deployment-v1.yml 
 $ k apply -f k8s/django/migration.yml
+
+_Run the services and deployment if not applied for django_
+
 $ k apply -f k8s/django/
+
+
 $ docker-compose -f k8s/minikube.yml build frontend
-$ k apply -f k8s/fronent/
+$ k apply -f k8s/react/
 $ minikube addons enable ingress
 $ k apply -f k8s/ingress.yml
+
+Navigate to http://localhost:3000 & http://localhost:8000 
+and see the desired application running on kubernetes-cluster
 
 
 ```
