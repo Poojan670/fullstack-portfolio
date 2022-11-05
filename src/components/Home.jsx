@@ -9,7 +9,7 @@ import Header from "./Header";
 import { getExperiences, getPageInfo, getProjects, getSkills } from '../utils/api';
 
 
-export default function Home() {
+export default function Home({ theme, toggleTheme }) {
 
     const [pageInfo, setPageInfo] = useState();
     const [experiences, setExperiences] = useState([]);
@@ -48,37 +48,36 @@ export default function Home() {
         Project().catch(r => console.log(r.message))
     }, [])
 
-
     return (
-        <div className="bg-[rgb(36,36,36)] text-white h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0 scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#F7AB0A]/80">
+        <div className={theme === "dark-mode" ? "dark-home" : "light-home"}>
 
             <section className='snap-center'>
-                <Header pageInfo={pageInfo} />
+                <Header pageInfo={pageInfo} theme={theme} toggleTheme={toggleTheme} />
 
             </section>
 
             <section id="profile" className='snap-start'>
-                <Profile pageInfo={pageInfo} />
+                <Profile pageInfo={pageInfo} theme={theme} />
             </section>
 
             <section id="about" className='snap-center'>
-                <About pageInfo={pageInfo} />
+                <About pageInfo={pageInfo} theme={theme} />
             </section>
 
             <section id="experience" className='snap-center'>
-                <Experiences experiences={experiences} />
+                <Experiences experiences={experiences} theme={theme} />
             </section>
 
             <section id="skills" className='snap-start'>
-                <Skills skills={skills} />
+                <Skills skills={skills} theme={theme} />
             </section>
 
             <section id="projects" className='snap-start'>
-                <Projects projects={projects} />
+                <Projects projects={projects} theme={theme} />
             </section>
 
             <section id="contact" className='snap-start'>
-                <Contact pageInfo={pageInfo} />
+                <Contact pageInfo={pageInfo} theme={theme} />
             </section>
 
         </div>

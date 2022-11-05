@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import Skill from '../subComponents/Skill'
 
 
-export default function Skills({ skills }) {
+export default function Skills({ skills, theme }) {
     return (
         <motion.div
             initial={{ opacity: 0 }}
@@ -12,7 +12,7 @@ export default function Skills({ skills }) {
 
             className='flex relative flex-col text-center md:text-left xl:flex-row max-w-[2000px]
         xl:px-10 min-h-screen justify-center xl:space-y-0 mx-auto items-center'>
-            <h3 className='absolute top-24 uppercase tracking-[20px] text-gray-500 text-2xl md:-mt-20'>
+            <h3 className={theme === "dark-mode" ? "absolute top-24 uppercase tracking-[20px] text-gray-500 text-2xl md:-mt-20" : "absolute top-24 uppercase tracking-[20px] text-gray-900 text-2xl md:-mt-20"}>
                 Skills
             </h3>
 

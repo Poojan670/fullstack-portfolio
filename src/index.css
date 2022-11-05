@@ -1,3 +1,41 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+    --dark-bg: rgb(36, 36, 36);
+    --light-bg: rgb(245, 245, 245);
+    /* --dark-bg: #222;
+    --light-bg: white; */
+}
+
+@layer components {
+    .dark-home {
+        @apply bg-dark-bg text-white h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0 scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#F7AB0A]/80;
+    }
+
+    .light-home {
+        @apply bg-light-bg text-black h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0 scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#F7AB0A]/80;
+    }
+
+    .a-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        -webkit-transition: all ease 0.5s;
+        -moz-transition: all ease 0.5s;
+        -o-transition: all ease 0.5s;
+        -ms-transition: all ease 0.5s;
+        transition: all ease 0.5s;
+    }
+
+    .a-img:hover {
+        opacity: 0;
+    }
+
+    @media (max-width:1280px) {
+        .a-img {
+            display: none;
+        }
+    }
+}

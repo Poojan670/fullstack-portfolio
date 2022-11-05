@@ -3,7 +3,7 @@ import Circles from '../subComponents/Circles'
 import { Cursor, useTypewriter } from 'react-simple-typewriter';
 
 
-function Profile({ pageInfo }) {
+function Profile({ pageInfo, theme }) {
     const [text, count] = useTypewriter({
         words: [`Hi, My name's ${pageInfo?.name}`, "Full Stack Developer", "Software engineer"],
         loop: true,
@@ -12,7 +12,7 @@ function Profile({ pageInfo }) {
 
     return (
         <div className='h-screen flex flex-col space-y-8 items-center justify-center text-center overflow-hidden'>
-            <Circles />
+            <Circles theme={theme} />
             <img
                 className='relative rounded-full h-32 w-32 mx-auto object-cover'
                 src={pageInfo?.image} alt="" />
@@ -26,16 +26,22 @@ function Profile({ pageInfo }) {
 
                 <div className='pt-5'>
                     <a href='#about'>
-                        <button className='px-6 py-2 border border-[#242424] rounded-full uppercase text-xs tracking-widest text-gray-500 transition-all hover:border-[#F7AB0A]/40 hover:text-[#F7AB0A]/40'>About</button>
+                        <button className={theme === 'dark-mode' ?
+                            "px-6 py-2 border border-[#242424] rounded-full uppercase text-xs tracking-widest text-gray-500 transition-all hover:border-[#F7AB0A]/40 hover:text-[#F7AB0A]/40"
+                            :
+                            "px-6 py-2 border border-slate-50 rounded-full uppercase text-xs tracking-widest text-gray-500 transition-all hover:border-[#242424]/80 hover:text-[#242424]/40"}>About</button>
                     </a>
                     <a href='#experience'>
-                        <button className='px-6 py-2 border border-[#242424] rounded-full uppercase text-xs tracking-widest text-gray-500 transition-all hover:border-[#F7AB0A]/40 hover:text-[#F7AB0A]/40'>Experience</button>
+                        <button className={theme === "dark-mode" ? 'px-6 py-2 border border-[#242424] rounded-full uppercase text-xs tracking-widest text-gray-500 transition-all hover:border-[#F7AB0A]/40 hover:text-[#F7AB0A]/40' :
+                            'px-6 py-2 border border-slate-50 rounded-full uppercase text-xs tracking-widest text-gray-500 transition-all hover:border-[#242424]/80 hover:text-[#242424]/40'}>Experience</button>
                     </a>
                     <a href='#skills'>
-                        <button className='px-6 py-2 border border-[#242424] rounded-full uppercase text-xs tracking-widest text-gray-500 transition-all hover:border-[#F7AB0A]/40 hover:text-[#F7AB0A]/40'>Skills</button>
+                        <button className={theme === "dark-mode" ? "px-6 py-2 border border-[#242424] rounded-full uppercase text-xs tracking-widest text-gray-500 transition-all hover:border-[#F7AB0A]/40 hover:text-[#F7AB0A]/40" :
+                            "px-6 py-2 border border-slate-50 rounded-full uppercase text-xs tracking-widest text-gray-500 transition-all hover:border-[#242424]/80 hover:text-[#242424]/40"}>Skills</button>
                     </a>
                     <a href='#projects'>
-                        <button className='px-6 py-2 border border-[#242424] rounded-full uppercase text-xs tracking-widest text-gray-500 transition-all hover:border-[#F7AB0A]/40 hover:text-[#F7AB0A]/40'>Projects</button>
+                        <button className={theme === "dark-mode" ? "px-6 py-2 border border-[#242424] rounded-full uppercase text-xs tracking-widest text-gray-500 transition-all hover:border-[#F7AB0A]/40 hover:text-[#F7AB0A]/40" :
+                            "px-6 py-2 border border-slate-50 rounded-full uppercase text-xs tracking-widest text-gray-500 transition-all hover:border-[#242424]/80 hover:text-[#242424]/40"}>Projects</button>
                     </a>
                 </div>
             </div>

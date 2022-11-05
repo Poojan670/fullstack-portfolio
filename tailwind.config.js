@@ -7,7 +7,15 @@ module.exports = {
     "./subComponents/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundColor: {
+        "dark-bg": "var(--dark-bg)",
+        "light-bg": "var(--light-bg)"
+      },
+      animation: {
+        'spin': 'spin 3s linear infinite',
+      }
+    },
   },
   plugins: [
     require('tailwind-scrollbar'),

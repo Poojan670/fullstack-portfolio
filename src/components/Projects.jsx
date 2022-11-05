@@ -2,7 +2,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 
 
-export default function Projects({ projects }) {
+export default function Projects({ projects, theme }) {
     return (
         <motion.div
             initial={{
@@ -12,7 +12,7 @@ export default function Projects({ projects }) {
             transition={{ duration: 1.5 }}
 
             className='h-screen relative flex overflow-hidden flex-col text-left md:flex-row max-w-full justify-evenly mx-auto items-center z-0'>
-            <h3 className='absolute top-24 uppercase tracking-[20px] text-gray-500 text-2xl md:-mt-20'>Projects</h3>
+            <h3 className={theme === "dark-mode" ? "absolute top-24 uppercase tracking-[20px] text-gray-500 text-2xl md:-mt-20 sm:-mt-20" : "absolute top-24 uppercase tracking-[20px] text-gray-900 text-2xl md:-mt-20 sm:-mt-20"}>Projects</h3>
 
             <div className='relative w-full flex overflow-x-scroll overflow-y-hidden snap-x snap-mandatory z-20
             scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-[#F7AB0A]/80'>
@@ -75,7 +75,6 @@ export default function Projects({ projects }) {
             </div >
 
             <div className='w-full absolute top-[30%] bg-[#F7AB0A]/10 left-0 h-[500px] -skew-y-12'>
-
             </div>
 
 

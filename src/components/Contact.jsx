@@ -3,7 +3,7 @@ import { PhoneIcon, MapPinIcon, EnvelopeIcon } from '@heroicons/react/24/solid'
 import emailjs from '@emailjs/browser';
 
 
-export default function Contact({ pageInfo }) {
+export default function Contact({ pageInfo, theme }) {
 
     const formRef = useRef()
     const [done, setDone] = useState(false)
@@ -27,7 +27,7 @@ export default function Contact({ pageInfo }) {
     return (
         <div className='h-screen flex relative flex-col text-center md:text-left md:flex-row max-w-7xl px-10 justify-evenly
         mx-auto items-center'>
-            <div className='absolute top-24 uppercase tracking-[20px] text-gray-500 text-2xl md:-mt-20'>
+            <div className={theme === "dark-mode" ? "absolute top-24 uppercase tracking-[20px] text-gray-500 text-2xl md:-mt-20 sm:-mt-20" : "absolute top-24 uppercase tracking-[20px] text-gray-900 text-2xl md:-mt-20 sm:-mt-20"}>
                 Contact
             </div>
 

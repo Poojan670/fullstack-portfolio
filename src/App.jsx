@@ -1,11 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import Home from './components/Home';
 
 
 function App() {
+
+  const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'dark-mode')
+  const toggleTheme = () => {
+    theme === "dark-mode" ? setTheme("light-mode") : setTheme("dark-mode")
+  }
+  localStorage.setItem('theme', theme)
+
   return (
-    <Home />
+    <Home theme={theme} toggleTheme={toggleTheme}/>
   );
 }
 
