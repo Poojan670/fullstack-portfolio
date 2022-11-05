@@ -1,46 +1,218 @@
-# Getting Started with Create React App
+<p align="center">
+  <a href="https://www.saaspegasus.com/static/images/web/modern-javascript/django-react-header.png"><img src="https://www.saaspegasus.com/static/images/web/modern-javascript/django-react-header.png" alt="Spring Boot" height="200"></a>
+</p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align="center">
+    <em>Personal Fullstack Portfolio Using React, Tailwind, Django Rest Framework, Docker & Kubernetes </em>
+</p>
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+**Source Code**:
 
-### `npm start`
+https://github.com/reactjs/reactjs.org.git
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+---
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+React is a free and open-source front-end JavaScript library for building user interfaces based on UI components. It is maintained by Meta and a community of individual developers and companies.
 
-### `npm test`
+Tailwind CSS is an open source CSS framework. The main feature of this library is that, unlike other CSS frameworks like Bootstrap, it does not provide a series of predefined classes for elements such as buttons or tables.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Django REST framework (DRF) is a powerful and flexible toolkit for building Web APIs. Its main benefit is that it makes serialization much easier. Django REST framework is based on Django's class-based views, so it's an excellent option if you're familiar with Django.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<p align="center">
+  <a href="https://miro.medium.com/max/1200/1*lAMsvtB6afHwTQYCNM1xvw.png" alt="React & Django" height="200"></a>
+</p>
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Project Description
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+_FullStack Porfolio Web Application Using React as Frontend, DRF as backend on express server, PostgreSQL as database_
+__Fully Dockerized and Configured Kuberentes_
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Requirements
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+React 17+
 
-## Learn More
+npx/npm/node
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+postgresql 9.0+
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+django 4.0+
+
+## Installation
+
+<div class="termy">
+
+***CLIENT SETUP***
+
+Setup an .env.development file in frontend/ with following sample
+```console
+
+REACT_APP_BASE_URL=
+REACT_APP_EMAIL_JS_SERVICE=
+REACT_APP_EMAIL_JS_TEMPLATE=
+REACT_APP_EMAIL_JS_KEY=
+
+```
+</div>
+
+<div class="termy">
+
+Install Using yarn package
+
+```console
+$ yarn
+```
+</div>
+
+<div class="termy">
+
+Run the Project
+```console
+$ yarn start:development
+```
+</div>
+
+
+<div class="termy">
+
+
+***SERVER SETUP***
+
+Setup an .env file in backend/ with following sample
+```console
+ // For DRF & Postgres Configurations
+
+SECRET_KEY=
+DEBUG=
+ALLOWED_HOSTS=
+DB_NAME=
+DB_USER=
+DB_PASSWORD=
+DB_HOST=
+DB_PORT=
+CORS_ALLOWED_ORIGINS=
+CORS_ALLOW_ALL_ORIGINS=
+
+```
+</div>
+
+<div class="termy">
+
+Create a virtual environment
+
+_python -m venv env_
+
+Activate the virtual environment
+
+_env/Scripts/activate_
+
+Install Using pip package
+
+```console
+$ pip install -r requirements.txt
+
+```
+</div>
+
+<div class="termy">
+
+Setup Database 
+```console
+
+Open PSQL Terminal
+
+$ create database DB_NAME
+
+$ create role DB_USER with password DB_PASSWORD
+
+$ allow all privileges on database DB_NAME to DB_USER
+
+```
+</div>
+
+<div class="termy">
+
+Perform the DB migrations in django
+
+```console
+$ py manage.py migrate
+
+$ py manage.py runserver 8000
+```
+</div>
+
+
+<div class="termy">
+
+Follow the swagger Ui Documentation
+```console
+http://{SERVER_HOST}:{SERVER_PORT}/doc
+```
+</div>
+
+
+</div>
+
+# Try it out with [Docker](https://www.docker.com/)
+
+<div class="termy">
+
+Dockerize Personally (OPTIONAL)
+
+```console
+$ docker build -t frontend .
+$ docker build -t backend ./django/
+
+$ docker run -p 3000:80 frontend
+$ docker run -p 8000:80 backend
+```
+
+</div>
+
+<div class="termy">
+
+Run the Project via Docker Compose Directly
+
+```console
+$ docker-compose up 
+```
+
+</div>
+
+
+<div class="termy">
+
+Setting up the project in miniube-kubernetes cluster
+
+```console
+$ minikube start
+$ minikube status
+$ alias k='kubectl
+$ docker-compose -f k8s/minikube.yml build backend
+$ k apply -f kubernetes/django/deployment.yml
+
+_for postgres user and password_
+$ echo -n "my-secret-user" | base64
+bXktc2VjcmV0LXN0cmluZw==
+$ echo -n "my-secret-password" | base64 -d
+my-secret-string
+$ k apply -f k8s/postgres/secrets.yml
+$ k apply -f k8s/django/deployment.yml (if any changes for v2)
+$ k apply -f k8s/django/migration.yml
+$ k apply -f k8s/django/
+$ docker-compose -f k8s/minikube.yml build frontend
+$ k apply -f k8s/fronent/
+$ minikube addons enable ingress
+$ k apply -f k8s/ingress.yml
+
+
+```
+
+</div>
+
+
