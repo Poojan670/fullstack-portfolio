@@ -10,7 +10,7 @@
 
 **Source Code**:
 
-https://github.com/reactjs/reactjs.org.git
+https://github.com/Poojan670/fullstack-portfolio
 
 ---
 
@@ -31,7 +31,8 @@ Django REST framework (DRF) is a powerful and flexible toolkit for building Web 
 ## Project Description
 
 _FullStack Porfolio Web Application Using React as Frontend, DRF as backend on express server, PostgreSQL as database_
-__Fully Dockerized and Configured Kuberentes_
+
+_Fully Dockerized and Configured Kuberentes_
 
 ## Requirements
 
@@ -184,6 +185,8 @@ $ docker-compose up
 
 </div>
 
+
+# Try it out with [Kubernetes](https://kubernetes.io/)
 
 <div class="termy">
 
