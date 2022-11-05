@@ -1,0 +1,78 @@
+apiVersion: apps/v2
+kind: Deployment
+metadata:
+  name: django
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: django-container
+  template:
+    metadata:
+      labels:
+        app: django-container
+    spec:
+      containers:
+        - name: backend:1
+          imagePullPolicy: IfNotPresent
+          command: ["./manage.py", "runserver", "0.0.0.0:8000"]
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 8000
+          readinessProbe:
+            httpGet:
+              path: /readiness
+              port: 8000
+            initialDelaySeconds: 10
+            timeoutSeconds: 5
+          ports:
+            - containerPort: 8000
+          env:
+            - name: DJANGO_SETTINGS_MODULE
+              value: "backend.settings"
+
+            - name: SECRET_KEY
+              value: "insertyoursecretkeyhere"
+
+            - name: DB_NAME
+              value: "portfolio_db"
+
+            - name: DEBUG
+              value: True
+
+            - name: ALLOWED_HOSTS
+              value: "*"
+
+            - name: DB_HOST
+              value: "localhost"
+
+            - name: DB_PORT
+              value: "5432"
+
+            - name: CORS_ALLOWED_ORIGINS
+              value: http://localhost:3000,http://localhost:3001
+
+            - name: CORS_ALLOW_ALL_ORIGINS
+              value: True
+
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-credentials
+                  key: user
+
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-credentials
+                  key: password
+
+          volumeMounts:
+            - name: postgres-volume-mount
+              mountPath: /var/lib/busybox
+
+      volumes:
+        - name: postgres-volume-mount
+          persistentVolumeClaim:
+            claimName: postgres-pvc

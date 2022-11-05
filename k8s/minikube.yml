@@ -1,0 +1,14 @@
+version: "3.8"
+
+services:
+  backend:
+  image: backend:1
+  build:
+    context: ../django
+    dockerfile: Dockerfile
+
+  frontend:
+    image: frontend:1
+    build:
+      context: ./
+      dockerfile: Dockerfile
