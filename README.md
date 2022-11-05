@@ -21,10 +21,8 @@ Tailwind CSS is an open source CSS framework. The main feature of this library i
 Django REST framework (DRF) is a powerful and flexible toolkit for building Web APIs. Its main benefit is that it makes serialization much easier. Django REST framework is based on Django's class-based views, so it's an excellent option if you're familiar with Django.
 
 
-
-
 <p align="center">
-  <a href="https://miro.medium.com/max/1200/1*lAMsvtB6afHwTQYCNM1xvw.png" alt="React & Django" height="200"></a>
+  <a href="https://miro.medium.com/max/1200/1*lAMsvtB6afHwTQYCNM1xvw.png"><img src="https://miro.medium.com/max/1200/1*lAMsvtB6afHwTQYCNM1xvw.png" alt="React" height="200"></a>
 </p>
 
 
