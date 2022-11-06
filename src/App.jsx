@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './App.css';
 import Home from './components/Home';
 
 
@@ -12,7 +11,7 @@ function App() {
   localStorage.setItem('theme', theme)
 
   return (
-    <Home theme={theme} toggleTheme={toggleTheme}/>
+    <Home theme={theme} toggleTheme={toggleTheme} />
   );
 }
 

@@ -30,7 +30,7 @@ const Header = ({ pageInfo, theme, toggleTheme }) => {
                     <SocialIcon
                         key={socialIcon.id}
                         url={socialIcon.url}
-                        fgColor={theme === "dark-mode" ? "gray" : "#242424"} bgColor="transparent" />
+                        fgColor={theme === "dark-mode" ? "gray" : "#242424"} bgColor="transparent" target='_blank' />
                 ))}
 
             </motion.div>

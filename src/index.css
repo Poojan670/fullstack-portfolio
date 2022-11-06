@@ -15,7 +15,7 @@
     }
 
     .light-home {
-        @apply bg-light-bg text-black h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0 scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#F7AB0A]/80;
+        @apply bg-light-bg text-black h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0 scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#242424]/80;
     }
 
     .a-img {
