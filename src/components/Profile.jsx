@@ -1,6 +1,7 @@
 import React from 'react'
 import Circles from '../subComponents/Circles'
 import { Cursor, useTypewriter } from 'react-simple-typewriter';
+import { motion } from 'framer-motion'
 
 
 function Profile({ pageInfo, theme }) {
@@ -13,7 +14,11 @@ function Profile({ pageInfo, theme }) {
     return (
         <div className='h-screen flex flex-col space-y-8 items-center justify-center text-center overflow-hidden'>
             <Circles theme={theme} />
-            <img
+            <motion.img
+
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+
                 className='relative rounded-full h-32 w-32 mx-auto object-cover'
                 src={pageInfo?.image} alt="" />
             <div className='z-20'>
