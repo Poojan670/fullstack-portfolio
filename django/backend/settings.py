@@ -47,7 +47,8 @@ THIRD_PARTY_APPS = [
     'drf_yasg'
 ]
 
-INSTALLED_APPS = ['django.contrib.admin',
+INSTALLED_APPS = ['jazzmin',
+                  'django.contrib.admin',
                   'django.contrib.auth',
                   'django.contrib.contenttypes',
                   'django.contrib.sessions',
