@@ -72,7 +72,8 @@ class Project(DateTimeModel):
     image = models.ImageField(upload_to='images', blank=True, help_text="Image of the project shown in case study")
     summary = models.TextField(help_text="Project Summary")
     technologies = models.ManyToManyField(Skills, related_name="project_tech")
-    build_url = models.URLField(max_length=255, blank=True, help_text="Github/Live demo url of the project")
+    build_url = models.URLField(max_length=255, blank=True, help_text="Github url of the project")
+    preview_url = models.URLField(max_length=255, blank=True, help_text="Live demo preview url of the project")
 
     def __str__(self):
         return self.title

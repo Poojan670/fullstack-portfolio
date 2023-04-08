@@ -6,12 +6,12 @@ from .serializers import (SocialsSerializer, SkillsSerializer, PageInfoSerialize
                           ProjectSerializer, ExperienceSerializer, GetPageInfoListSerializer, GetExperienceSerializer)
 
 
-class SocialViewSet(viewsets.ModelViewSet):
+class SocialViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Socials.objects.all()
     serializer_class = SocialsSerializer
 
 
-class PageInfoViewSet(viewsets.ModelViewSet):
+class PageInfoViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = PageInfo.objects.all().prefetch_related('social')
     serializer_class = PageInfoSerializer
 
@@ -22,7 +22,7 @@ class PageInfoViewSet(viewsets.ModelViewSet):
             return self.serializer_class
 
 
-class ExperienceViewSet(viewsets.ModelViewSet):
+class ExperienceViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Experience.objects.all()
     serializer_class = ExperienceSerializer
 
@@ -33,12 +33,12 @@ class ExperienceViewSet(viewsets.ModelViewSet):
             return self.serializer_class
 
 
-class SkillsViewSet(viewsets.ModelViewSet):
+class SkillsViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Skills.objects.all()
     serializer_class = SkillsSerializer
 
 
-class ProjectViewSet(viewsets.ModelViewSet):
+class ProjectViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Project.objects.all()
     serializer_class = ProjectSerializer
 

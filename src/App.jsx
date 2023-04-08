@@ -1,17 +1,20 @@
-import React, { useState } from 'react';
-import Home from './components/Home';
-
+import React, { useState } from "react";
+import Home from "./components/Home";
+import { BrowserRouter as Routes, Link } from "react-router-dom";
 
 function App() {
-
-  const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'dark-mode')
+  const [theme, setTheme] = useState(
+    () => localStorage.getItem("theme") || "dark-mode"
+  );
   const toggleTheme = () => {
-    theme === "dark-mode" ? setTheme("light-mode") : setTheme("dark-mode")
-  }
-  localStorage.setItem('theme', theme)
+    theme === "dark-mode" ? setTheme("light-mode") : setTheme("dark-mode");
+  };
+  localStorage.setItem("theme", theme);
 
   return (
-    <Home theme={theme} toggleTheme={toggleTheme} />
+    <Routes>
+      <Home theme={theme} toggleTheme={toggleTheme} />
+    </Routes>
   );
 }
 
