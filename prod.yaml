@@ -1,0 +1,28 @@
+version: "3.0"
+
+services:
+  portfolio-backend:
+    image: "portfolio-prod:0.1"
+    network_mode: "host"
+    build:
+      context: ./django/
+      dockerfile: Dockerfile-prod
+    expose:
+      - 8649
+    restart: always
+    container_name: portfolio-backend
+    volumes:
+      - /var/www/poojan_projects/portfolio/portfolio-backend/media:/app/media
+      - /var/www/poojan_projects/portfolio/portfolio-backend/static:/app/static
+
+  react:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    networks:
+      - network-server
+    ports:
+      - "8648:8648"
+    stdin_open: true
+    depends_on:
+      - portfolio-backend

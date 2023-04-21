@@ -17,8 +17,7 @@
     "react-scripts": "5.0.1",
     "react-simple-typewriter": "^4.0.5",
     "react-social-icons": "^5.15.0",
-    "tailwind-scrollbar": "^2.0.1",
-    "typescript": "^5.0.4"
+    "tailwind-scrollbar": "^2.0.1"
   },
   "scripts": {
     "start": "env-cmd -f .env react-scripts  start",
@@ -27,8 +26,7 @@
   },
   "eslintConfig": {
     "extends": [
-      "react-app",
-      "react-app/jest"
+      "react-app"
     ]
   },
   "browserslist": {
