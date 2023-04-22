@@ -15,14 +15,14 @@ services:
       - /var/www/poojan_projects/portfolio/portfolio-backend/media:/app/media
       - /var/www/poojan_projects/portfolio/portfolio-backend/static:/app/static
 
-  react:
+  portfolio-frontend:
     build:
       context: ./
-      dockerfile: Dockerfile
-    networks:
-      - network-server
+      dockerfile: Dockerfile-prod
     ports:
       - "8648:8648"
+    restart: always
     stdin_open: true
+    container_name: portfolio-frontend
     depends_on:
       - portfolio-backend

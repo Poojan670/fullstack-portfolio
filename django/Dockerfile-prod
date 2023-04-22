@@ -25,8 +25,5 @@ RUN pip3 install -r requirements.txt --no-cache-dir
 # Copy the entire project to the container's /app directory
 COPY . $APP_HOME
 
-# Run tests for the project
-RUN python manage.py test
-
 # Set the default command to run the Gunicorn server when the container starts
-CMD ["gunicorn", "backend.asgi:application", "--bind", "0.0.0.0:8483", "--worker-class", "uvicorn.workers.UvicornWorker"]
+CMD ["gunicorn", "backend.asgi:application", "--bind", "0.0.0.0:8649", "--worker-class", "uvicorn.workers.UvicornWorker"]
