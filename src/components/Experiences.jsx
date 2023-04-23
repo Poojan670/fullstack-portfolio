@@ -22,7 +22,7 @@ export default function Experiences({ experiences, theme }) {
 
       <div
         className={classNames(
-          "w-full flex space-x-5 overflow-x-scroll p-10 snap-x snap-mandatory scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#F7AB0A]/80 ",
+          "w-full h-full flex space-x-5 overflow-x-scroll p-10 xl:mt-5 mt-[6rem] snap-x snap-mandatory scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#F7AB0A]/80 ",
           theme === "light-mode" && " scrollbar-thumb-[#242424]/80"
         )}
       >

@@ -14,6 +14,8 @@ export default function Contact({ pageInfo, theme }) {
       "text-gray-900 focus:border-[#242424]/60 focus:text-[#242424]/60 hover:border-[#242424]/40"
   );
 
+  const textClass = classNames(isSmallScreen ? "text-md" : "text-2xl");
+
   const iconClass = classNames(
     "text-[#f7AB0A] h-7 w-7 animate-plus",
     theme === "light-mode" && "text-[#242424]"
@@ -69,20 +71,20 @@ export default function Contact({ pageInfo, theme }) {
           </h4>
         )}
 
-        <div className="space-y-10 mt-20 xl:mt-0">
-          <div className="flex items-center space-x-5 justify-center">
+        <div className="space-y-5 mt-20 xl:mt-0">
+          <div className="flex items-center space-x-3 justify-center">
             <PhoneIcon className={iconClass} />
-            <p className="text-2xl">{pageInfo?.phone_no}</p>
+            <p className={textClass}>{pageInfo?.phone_no}</p>
           </div>
 
-          <div className="flex items-center space-x-5 justify-center">
+          <div className="flex items-center space-x-3 justify-center">
             <EnvelopeIcon className={iconClass} />
-            <p className="text-2xl">{pageInfo?.email}</p>
+            <p className={textClass}>{pageInfo?.email}</p>
           </div>
 
-          <div className="flex items-center space-x-5 justify-center">
+          <div className="flex items-center space-x-3 justify-center">
             <MapPinIcon className={iconClass} />
-            <p className="text-2xl">{pageInfo?.address}</p>
+            <p className={textClass}>{pageInfo?.address}</p>
           </div>
         </div>
 
@@ -91,7 +93,11 @@ export default function Contact({ pageInfo, theme }) {
           onSubmit={handleSubmit}
           className="flex flex-col space-y-2 w-fit mx-auto"
         >
-          <div className="flex space-x-2">
+          <div
+            className={classNames(
+              isSmallScreen ? "flex flex-col" : "flex space-x-2"
+            )}
+          >
             <input
               placeholder="Name"
               className={inputClass}

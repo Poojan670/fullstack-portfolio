@@ -1,8 +1,10 @@
 import React from "react";
 import { motion } from "framer-motion";
 import classNames from "classnames";
+import { useMediaQuery } from "react-responsive";
 
 export default function About({ pageInfo, theme }) {
+  const isSmallScreen = useMediaQuery({ maxWidth: 640 });
   return (
     <motion.div
       initial={{
@@ -42,16 +44,24 @@ export default function About({ pageInfo, theme }) {
         className="-mb-20 md:mb-0 flex-shrink-0 w-56 h-56 rounded-full object-cover md:rounded-lg md:w-64 md:h-95
                 xl:w-[500px] xl:h-[600px]"
       >
-        <img src={pageInfo?.profile_pic} alt="Profile2" />
+        <img
+          src={pageInfo?.profile_pic}
+          alt="Profile2"
+          className={classNames(isSmallScreen ? "" : "lg:h-[90%] md:h-[90%]")}
+        />
         <img
           src={pageInfo?.image}
           alt="ProfilePic"
-          className="a-img -my-[600px] -mx-10"
+          className="a-img -my-[500px] h-[90%] w-[90%]"
         />
       </motion.div>
 
       <div className="space-y-10 px-0 md:px-10">
-        <h4 className="text-4xl font-semibold">
+        <h4
+          className={classNames(
+            isSmallScreen ? "hidden" : "text-4xl font-semibold"
+          )}
+        >
           Here is a{" "}
           <span
             className={classNames(
@@ -63,7 +73,13 @@ export default function About({ pageInfo, theme }) {
           </span>{" "}
           background
         </h4>
-        <p className="text-base">{pageInfo?.background_info}</p>
+        {isSmallScreen ? (
+          <p className="text-base">
+            {pageInfo?.background_info.substring(0, 256)}
+          </p>
+        ) : (
+          <p className="text-base">{pageInfo?.background_info}</p>
+        )}
       </div>
     </motion.div>
   );

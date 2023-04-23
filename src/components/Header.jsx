@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { SocialIcon } from "react-social-icons";
 import { motion } from "framer-motion";
-import { getSocials } from "../utils/api";
 import classNames from "classnames";
+import { useMediaQuery } from "react-responsive";
 
 const Header = ({ pageInfo, theme, toggleTheme }) => {
+  const isSmallScreen = useMediaQuery({ maxWidth: 640 });
   return (
     <main
       className="sticky top-0 p-5 flex 
@@ -51,7 +52,11 @@ const Header = ({ pageInfo, theme, toggleTheme }) => {
         transition={{
           duration: 1.5,
         }}
-        className="flex flex-row items-center cursor-pointer"
+        className={classNames(
+          isSmallScreen
+            ? "mt-[0.5rem]"
+            : "flex flex-row items-center cursor-pointer"
+        )}
         onClick={toggleTheme}
       >
         {theme === "dark-mode" ? (

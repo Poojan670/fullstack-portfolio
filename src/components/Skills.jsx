@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import React, { useState } from "react";
+import React from "react";
 import Skill from "../subComponents/Skill";
 import { useMediaQuery } from "react-responsive";
 import classNames from "classnames";

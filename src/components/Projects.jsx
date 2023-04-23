@@ -32,7 +32,7 @@ export default function Projects({ projects, theme }) {
 
       <div
         className={classNames(
-          "relative w-full mt-0 flex overflow-x-scroll xl:mt-0 mt-[10rem] overflow-y-hidden snap-x snap-mandatory z-20 scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-[#F7AB0A]/80",
+          "relative w-full flex overflow-x-scroll xl:mt-0 mt-[5rem] overflow-y-hidden snap-x snap-mandatory z-20 scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-[#F7AB0A]/80",
           theme === "light-mode" && "scrollbar-thumb-[#242424]/80"
         )}
       >
@@ -57,20 +57,27 @@ export default function Projects({ projects, theme }) {
                 once: true,
               }}
               src={project?.image}
-              height={isSmallScreen ? "100%" : "50%"}
-              width={isSmallScreen ? "100%" : "50%"}
+              className="xl:h-[70%] xl:w-[40%]"
+              height={isSmallScreen ? "100%" : "80%"}
+              width={isSmallScreen ? "100%" : "80%"}
               alt=""
             />
 
             <div className="xl:space-y-10 space-y-5 px-0 md:px-10 max-w-6xl ">
-              <h4 className="text-4xl font-semibold text-center">
+              <h4
+                className={classNames(
+                  isSmallScreen
+                    ? "text-xl font-semibold text-center"
+                    : "text-4xl font-semibold text-center"
+                )}
+              >
                 <span
                   className={classNames(
                     "underline decoration-[#F7AB0A]/50 ",
                     theme === "light-mode" && "decoration-[#242424]/50"
                   )}
                 >
-                  Case Study {i + 1} of {projects.length}
+                  {i + 1} of {projects.length}
                 </span>{" "}
                 {project?.title}
               </h4>
@@ -108,8 +115,18 @@ export default function Projects({ projects, theme }) {
                 </button>
               </div>
 
-              <p className="text-lg text-center md:text-leftmotion">
-                {isSmallScreen ? "" : <>{project?.summary}</>}
+              <p
+                className={classNames(
+                  isSmallScreen
+                    ? "text-sm"
+                    : "text-lg text-center md:text-leftmotion"
+                )}
+              >
+                {isSmallScreen ? (
+                  <>{project?.summary?.substring(0, 300)}...</>
+                ) : (
+                  <>{project?.summary}</>
+                )}
               </p>
             </div>
           </div>

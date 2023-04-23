@@ -25,15 +25,17 @@ function Card({ experience, theme }) {
         viewport={{
           once: true,
         }}
-        className="w-[6rem] h-[2rem]  xl:w-[200px] xl:h-[90px] object-cover object-center"
+        className="w-[15rem] h-[5.5rem] xl:w-[200px] xl:h-[90px] object-cover object-center"
         src={experience.company_image}
         alt=""
       />
 
       <div className="px-0 md:px-10">
-        <h4 className="text-4xl font-light">{experience.job_title}</h4>
+        <h4 className="text-4xl flex justify-center font-light">
+          {experience.job_title}
+        </h4>
         <br></br>
-        <div className="flex space-x-2 my-2">
+        <div className="flex justify-center space-x-2 my-2">
           {experience.technologies.map((technology) => (
             <img
               key={technology.id}
@@ -43,16 +45,19 @@ function Card({ experience, theme }) {
             />
           ))}
         </div>
-        <p className="uppercase py-5 text-gray-300">
+        <p className="uppercase flex justify-center py-5 text-gray-300">
           {new Date(experience.date_started).toDateString()}-{" "}
           {experience.is_working
             ? "Present"
             : new Date(experience.date_ended).toDateString()}
         </p>
 
-        <ul className="list-disc space-y-4 ml-5 text-lg max-h-96 overflow-y-scroll pr-5 scrollbar-thin scrollbar-track-black scrollbar-thumb-[#F7AB0A]/80">
+        <ul className="list-disc space-y-4 ml-5 text-md max-h-96 overflow-y-scroll pr-5 scrollbar-thin scrollbar-track-black scrollbar-thumb-[#F7AB0A]/80">
           {experience.points.map((point, i) => (
-            <li key={i}>{point}</li>
+            <li key={i}>
+              <span className="mr-2">⊛</span>
+              {point}
+            </li>
           ))}
         </ul>
       </div>
